@@ -12,8 +12,10 @@ class JavaScriptMiddleware(object):
         driver.get(response.url)
         time.sleep(1)
         js = "var q=document.documentElement.scrollTop=10000"
-        driver.execute_script('document.title')  # 可执行js，模仿用户操作。此处为将页面拉至最底端。
+        # driver.execute_script('document.title')  # 可执行js，模仿用户操作。此处为将页面拉至最底端。
+        print driver.find_elements_by_class_name('download')
         time.sleep(3)
         body = driver.page_source
+        driver.close()
         print("访问" + response.url)
-        return HtmlResponse(driver.current_url, body=body, encoding='utf-8', request=response)
+        return [HtmlResponse(driver.current_url, body=body, encoding='utf-8', request=response)]
