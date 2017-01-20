@@ -21,8 +21,6 @@ class ExtensionsDemo():
         crawler.signals.connect(self.response_downloaded, signal=signals.response_downloaded)
         crawler.signals.connect(self.item_scraped, signal=signals.item_scraped)
         crawler.signals.connect(self.item_dropped, signal=signals.item_dropped)
-        print crawler
-        print crawler.signals
 
     @classmethod
     def from_crawler(cls, crawler):
