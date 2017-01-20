@@ -32,15 +32,13 @@ class ExtensionsDemo():
 
 
     def engine_started(self):
-        traceback.print_stack()
+        logger.info("engine_started:%s", self)
 
     def engine_stopped(self):
-        print self
-        traceback.print_stack()
+        logger.info("engine_stopped:%s", self)
 
     def spider_opened(self, spider):
-        print spider
-        traceback.print_stack()
+        logger.info("spider:%s", spider)
 
     def spider_idle(self):
         traceback.print_stack()
@@ -64,7 +62,7 @@ class ExtensionsDemo():
         pass
 
     def item_scraped(self, item, spider):
-        logger.info('crawl items:' + item)
+        logger.info('crawl items:%s', item)
 
     def item_dropped(self, item, spider, exception):
         pass
