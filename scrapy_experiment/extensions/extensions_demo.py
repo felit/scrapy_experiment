@@ -26,9 +26,10 @@ class ExtensionsDemo():
 
     @classmethod
     def from_crawler(cls, crawler):
-        cls(crawler)
+        return cls(crawler)
         # 拋出此异常　扩展会被禁用
         # raise NotConfigured()
+
 
     def engine_started(self):
         traceback.print_stack()
