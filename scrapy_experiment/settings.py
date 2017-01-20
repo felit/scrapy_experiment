@@ -47,7 +47,7 @@ CONCURRENT_REQUESTS = 2
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-   'scrapy_experiment.middlewares.spider.javascript_middleware.JavaScriptMiddleware': 543,
+   # 'scrapy_experiment.middlewares.spider.javascript_middleware.JavaScriptMiddleware': 543,
 }
 
 # Enable or disable downloader middlewares
@@ -60,9 +60,11 @@ DOWNLOADER_MIDDLEWARES = {
 DOWNLOAD_TIMEOUT = 3
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
+EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-#}
+    'scrapy_experiment.extensions.extentions_demo.ExtensionsDemo': 200
+}
+
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
