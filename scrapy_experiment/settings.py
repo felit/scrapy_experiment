@@ -62,7 +62,7 @@ DOWNLOAD_TIMEOUT = 3
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-    'scrapy_experiment.extensions.extentions_demo.ExtensionsDemo': 200
+    'scrapy_experiment.extensions.extentions_demo.ExtensionsDemo': 2
 }
 
 

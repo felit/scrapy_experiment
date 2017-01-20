@@ -4,6 +4,9 @@ import scrapy
 from scrapy_experiment.items import ScrapyexperimentItem
 from scrapy import signals
 from scrapy.xlib.pydispatch import dispatcher
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class ExtensionsSpider(scrapy.Spider):
@@ -28,15 +31,20 @@ class ExtensionsSpider(scrapy.Spider):
         }
     }
 
-    def __init__(self):
-        # self.crawler.signals.connect(self.spider_opened, signals.spider_opened)
-        dispatcher.connect(self.spider_opened, signals.spider_opened)
-
-    def spider_opened(self, spider):
-        print spider
-
     def parse(self, response):
         item = ScrapyexperimentItem()
         item['name'] = 'oschina.net.text'
         yield item
-        print response.headers
+
+    def __init__(self):
+        # self.crawler.signals.connect(self.spider_opened, signals.spider_opened)
+        dispatcher.connect(self.spider_opened, signals.spider_opened)
+        dispatcher.connect(self.item_scraped, signal=signals.item_scraped)
+
+    def spider_opened(self, spider):
+        print spider
+
+    def item_scraped(self, item, spider):
+        logger.info('item_scraped methods:%s,%s', item, spider)
+
+
