@@ -10,14 +10,13 @@ logger = logging.getLogger(__name__)
 
 
 class ExtensionsSpider(scrapy.Spider):
-    name = 'extentions'
-    # custom_settings = {
-    # 'EXTENSIONS': {
-    # # 'scrapy_experiment.extensions.extentions_demo.ExtensionsDemo': 200
-    # }
-    # }
+    name = 'extensions'
+    # custom_settings = {}
     start_urls = ['http://www.oschina.net/']
     custom_settings = {
+         'EXTENSIONS': {
+            'scrapy_experiment.extensions.extensions_traceback.ExtensionsTraceback': 200
+        },
         'DEFAULT_REQUEST_HEADERS': {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6',

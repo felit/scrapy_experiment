@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class ExtensionsDemo():
+class ExtensionsTraceback():
     def __init__(self, crawler):
         crawler.signals.connect(self.engine_started, signal=signals.engine_started)
         crawler.signals.connect(self.engine_stopped, signal=signals.engine_stopped)
@@ -30,6 +30,7 @@ class ExtensionsDemo():
 
 
     def engine_started(self):
+        traceback.print_stack()
         logger.info("engine_started:%s", self)
 
     def engine_stopped(self):
