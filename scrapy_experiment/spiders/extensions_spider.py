@@ -14,8 +14,10 @@ class ExtensionsSpider(scrapy.Spider):
     # custom_settings = {}
     start_urls = ['http://www.oschina.net/']
     custom_settings = {
+        'FEED_URI':'file:///home/congsl/tmp/extensions.json',
+        'FEED_FORMAT':'json',
          'EXTENSIONS': {
-            'scrapy_experiment.extensions.extensions_traceback.ExtensionsTraceback': 200
+            # 'scrapy_experiment.extensions.extensions_traceback.ExtensionsTraceback': 200
         },
         'DEFAULT_REQUEST_HEADERS': {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
