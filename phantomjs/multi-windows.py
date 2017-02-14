@@ -6,12 +6,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
-def print_info(browser):
-    print browser.page_source.encode('UTF-8', 'ignore')
-    print browser.get_cookies()
-    print browser.title
-
-
 """
   杀掉phantomjs进程
   ps -ef | grep -i phan | grep -v grep | awk '{print $2}'| xargs kill -9
@@ -27,5 +21,4 @@ browser.execute_script(js)
 browser.switch_to.window(browser.window_handles[1])
 time.sleep(5)
 browser.save_screenshot("multi-windows.png")
-print_info(browser)
 browser.quit()
