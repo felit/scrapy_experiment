@@ -6,7 +6,7 @@
 # commonly used. You can find more settings consulting the documentation:
 #
 # http://doc.scrapy.org/en/latest/topics/settings.html
-#     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
+# http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'scrapy_experiment'
@@ -47,21 +47,21 @@ CONCURRENT_REQUESTS = 2
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-   # 'scrapy_experiment.middlewares.spider.javascript_middleware.JavaScriptMiddleware': 543,
+    # 'scrapy_experiment.middlewares.spider.javascript_middleware.JavaScriptMiddleware': 543,
 }
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     # 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware':None,
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware':None,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
     # 'scrapy_experiment.middlewares.download.proxy_middleware.ProxyMiddleware': 543,
 }
 DOWNLOAD_TIMEOUT = 3
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 EXTENSIONS = {
-#    'scrapy.extensions.telnet.TelnetConsole': None,
+    #    'scrapy.extensions.telnet.TelnetConsole': None,
 }
 
 
@@ -91,3 +91,8 @@ EXTENSIONS = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+from scrapy_experiment.feed_exporter.mongodb_export import MongodbStorage
+
+FEED_STORAGES = {
+    # 'mongo': 'scrapy_experiment.feed_exporter.mongodb_export.MongodbStorage'
+}

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+from scrapy_experiment.items import ScrapyexperimentItem
+
 
 class FeedExporterSpider(scrapy.Spider):
     name = "feed_exporter"
@@ -12,5 +14,6 @@ class FeedExporterSpider(scrapy.Spider):
     }
 
     def parse(self, response):
-
-        pass
+        item = ScrapyexperimentItem()
+        item['name'] = 'oschina.net'
+        yield item
