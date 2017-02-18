@@ -62,8 +62,15 @@ DOWNLOAD_TIMEOUT = 3
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 EXTENSIONS = {
     #    'scrapy.extensions.telnet.TelnetConsole': None,
+    # 'scrapy.extensions.statsmailer.StatsMailer': 500
 }
-
+# 邮件配置示例
+# STATSMAILER_RCPTS = ['test@126.com']
+# MAIL_FROM='test@126.com'
+# MAIL_HOST='smtp.126.com'
+# MAIL_PORT=25
+# MAIL_USER='test@126.com'
+# MAIL_PASS='123456'
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
