@@ -26,7 +26,7 @@ cha.queue_bind(exchange='yanfa', queue=result.method.queue, routing_key='', )
 #况且RabbitMQ不会对每条message做fsync动作
 #可通过publisher confirms实现更强壮的持久性保证
 begin_time = time.time()
-for i in range(1, 10000):
+for i in range(1, 100):
     cha.basic_publish(exchange='',
                       routing_key='anheng',
                       body='hello rabbitmq consumer%s' % (str(i)),

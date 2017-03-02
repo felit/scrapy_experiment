@@ -18,8 +18,5 @@ def callback(ch, method, properties, body):
     print " [x] Received %r" % (body,)
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
-
-cha.basic_consume(callback,
-                  queue='anheng',
-                  no_ack=False, )
+cha.basic_consume(callback, queue='anheng', no_ack=False, )
 cha.start_consuming()
