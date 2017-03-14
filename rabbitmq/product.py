@@ -8,7 +8,7 @@ con = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 #创建虚拟连接channel
 cha = con.channel()
 #创建队列anheng,durable参数为真时，队列将持久化；exclusive为真时，建立临时队列
-result = cha.queue_declare(queue='anheng', durable=True, exclusive=False)
+result = cha.queue_declare(queue='anheng', durable=False, exclusive=False)
 #创建名为yanfa,类型为fanout的exchange，其他类型还有direct和topic，如果指定durable为真，exchange将持久化
 cha.exchange_declare(durable=False, exchange='yanfa', type='direct', )
 #绑定exchange和queue,result.method.queue获取的是队列名称
@@ -26,11 +26,11 @@ cha.queue_bind(exchange='yanfa', queue=result.method.queue, routing_key='', )
 #况且RabbitMQ不会对每条message做fsync动作
 #可通过publisher confirms实现更强壮的持久性保证
 begin_time = time.time()
-for i in range(1, 100):
+for i in range(1, 100000):
     cha.basic_publish(exchange='',
                       routing_key='anheng',
                       body='hello rabbitmq consumer%s' % (str(i)),
-                      properties=pika.BasicProperties(delivery_mode=2, ))
+                      properties=pika.BasicProperties(delivery_mode=1, ))
 end_time = time.time()
 print 'take times:%sms' % (end_time - begin_time)
 print '[x] Sent %r' % (' '.join(sys.argv[:]))

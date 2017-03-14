@@ -10,4 +10,5 @@ class ProxySpider(scrapy.Spider):
     ]
 
     def parse(self, response):
+        print response.body
         pass
